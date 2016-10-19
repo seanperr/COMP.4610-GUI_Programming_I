@@ -1,0 +1,76 @@
+/*
+  AUTHOR:  Sean Perrier
+  EMAIL:   sean_perrier@student.uml.edu
+  FILE:    /~sperrier/public_html/exercises/exercise2/style.css
+ 
+  DATE CREATED:  September 29, 2016 3:00 PM
+  DATE MODIFIED: September 29, 2016 5:30 PM
+ 
+  AFFILIATION:
+    Author is an undergraduate at UMass Lowell majoring in Computer
+    Science. File was created for UMass Lowell's 'COMP 4610 GUI
+    Programming I' course.
+ 
+  FILE DESCRIPTION:
+    In-Class Exercise 2: Boxes
+    This file is the css styling of a simple web page. The goal
+    of this in-class exercise was to make a webpage that
+    resembled the webpage shown in the instructional PDF.
+    Modifying the body of the provided example.html file was not
+    permitted.
+ 
+  COPYRIGHT:
+    Copyright (c) 2016 by Sean M. Perrier. All rights reserved.
+*/
+
+
+body {
+    font-size: 80%;
+    font-family: "Courier New", Courier, monospace;
+    letter-spacing: 0.15em;
+    background-color: white;
+}
+
+p {
+    margin: 0 auto;
+    width: 600px;
+    padding-bottom: 20px;
+}
+
+/* Wrapper for entire page content. */
+#page {
+    margin: 0 auto;
+    border: 3px double black;
+    padding: 20px;
+    max-width: 940px;
+    min-width: 720px;
+    text-align: center;
+}
+
+/* Main navigation. */
+#navigation {
+    margin: 20px auto;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    width: 570px;
+    padding: 15px;
+}
+
+#navigation li {
+    display: inline;
+}
+
+#navigation a {
+    text-transform: uppercase;
+    color: black;
+    text-decoration: none;
+    padding: 6px 18px 6px 18px;
+}
+
+#navigation a:hover {
+    color: red;
+}
+
+#navigation a.on {
+    color: red; /* Current link is red. */
+}

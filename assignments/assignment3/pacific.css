@@ -1,0 +1,104 @@
+/*
+  AUTHOR:  Sean Perrier
+  EMAIL:   sean_perrier@student.uml.edu
+  FILE:    /~sperrier/public_html/assignments/assignment3/pacific.css
+ 
+  DATE CREATED:  September 17, 2016 12:00 PM
+  DATE MODIFIED: September 22, 2016 10:00 AM
+ 
+  AFFILIATION:
+    Author is an undergraduate at UMass Lowell majoring in Computer
+    Science. File was created for UMass Lowell's 'COMP 4610 GUI
+    Programming I' course.
+ 
+  FILE DESCRIPTION:
+    Assignment #3: Style a Site with External CSS
+    This file is the css styling of a simple web page. The goal
+    of this assignment was to make a webpage that resembled
+    the webpage shown in the instructional reference photos.
+    Modifying the provided index.html file was not permitted;
+    only pacific.css could be modified to achieve the desired
+    effect.
+ 
+  COPYRIGHT:
+    Copyright (c) 2016 by Sean M. Perrier. All rights reserved.
+*/
+
+header, hgroup, nav, footer, figure, figcaption, aside, section, article {
+	display: block;
+}
+h1, h2 {
+	font-family: Georgia, "Times New Roman", serif;
+}
+h1 {
+    margin: 0;
+	padding: 10px;
+}
+h2 {
+    padding: 20px 0;
+    margin: 0;
+    color: #3399CC;
+}
+body {
+    background: #00569f url(ptrbackground.jpg) left top repeat-x;
+    margin: 20px 10px 70px 10px;
+    color: #666666;
+	font-family: Arial, Helvetica, sans-serif;
+}
+img {
+    float: left;
+    margin-right: 30px;
+}
+header {
+    background: #000032 url(sunset.jpg) right no-repeat;
+    color: #ffffff;
+}
+nav {
+    width: 190px;
+    float: left;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 20px;
+    font-size: 1.2em;
+}
+nav a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #000032;
+}
+nav a:hover {
+    color: #ffffff;
+}
+footer {
+    margin-left: 190px;
+    padding: 20px;
+    background-color: #ffffff;
+    font-style: italic;
+    font-size: 0.75em;
+    font-family: Georgia, "Times New Roman", serif;
+}
+#wrapper {
+    min-width: 600px;
+    width: 90%;
+    background-color: #90c8e3;
+    margin: 0 auto;
+}
+#content {
+    margin-left: 190px;
+    background-color: #ffffff;
+    padding: 0 20px 15px 30px;
+}
+#content > ul {
+    list-style: inside url('marker.gif');
+    padding: 0;
+    margin: 20px 0 20px 40px;
+}
+#contact {
+    font-size: 0.9em;
+}
+.resort {
+    font-weight: bold;
+    color: #5b7f9f;
+}
