@@ -1,2 +1,2 @@
 # COMP.4610 - GUI Programming I
-gh-pages test
+This repository contains most of the work done by the author for COMP.4610 at UMass Lowell. Web page can be viewed [here](https://seanperr.github.io/COMP.4610-GUI_Programming_I/).
