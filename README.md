@@ -1,1 +1,2 @@
-# COMP.4610-GUI_Programming_I
+# COMP.4610 - GUI Programming I
+Master branch is not used. All files are in gh-pages branch.
