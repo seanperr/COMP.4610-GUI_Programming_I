@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+   AUTHOR:  Sean Perrier
+   EMAIL:   sean_perrier@student.uml.edu
+   FILE:    /assignments/assignment6/index.html
+
+   DATE CREATED:  November 01, 2016 4:30 PM
+   DATE MODIFIED: November 03, 2016 11:00 AM
+ 
+   AFFILIATION:
+     Author is an undergraduate at UMass Lowell majoring in Computer
+     Science. File was created for UMass Lowell's 'COMP 4610 GUI
+     Programming I' course.
+ 
+   FILE DESCRIPTION:
+     Assignment #6: Creating an Interactive Dynamic Table
+    
+     This file is the HTML structure of a simple web page. The web page
+     uses javascript to create and display a multiplication table.
+     Multiplier and multiplicand values are provided by the user via an
+     HTML form, and the page is styled using CSS.
+                        
+   COPYRIGHT:
+     Copyright (c) 2016 by Sean M. Perrier. All rights reserved.
+-->
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Assignment 6 - Creating an Interactive Dynamic Table</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+  </head>
+  <body>
+    <form id="form">
+        <fieldset>
+            <legend>Horizontal (Multiplier)</legend>
+            <label for="multiplierMin">Minimum</label>
+            <input type="number" name="multiplierMin" required>
+        
+            <label for="multiplierMax">Maximum</label>
+            <input type="number" name="multiplierMax" required>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Vertical (Multiplicand)</legend>
+            <label for="multiplicandMin">Minimum</label>
+            <input type="number" name="multiplicandMin" required>
+        
+            <label for="multiplicandMax">Maximum</label>
+            <input type="number" name="multiplicandMax" required>
+        </fieldset>
+
+        <input type="submit" value="Create Table">
+    </form>
+  </body>
+</html>
