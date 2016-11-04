@@ -125,7 +125,7 @@ if (typeof FormHandler == "undefined") { // Make sure namespace isn't used.
         /**
          * Initializes event listeners for an HTML form. Entering data into the
          * form triggers form validation, and submitting the form triggers
-         * table creation. Calls createMultTable(), appendReplaceNode(), and 
+         * table creation. Calls createMultTable(), appendReplaceHtmlElement(), and 
          * FormHandler.validation().
          *
          * @constructor
@@ -141,7 +141,7 @@ if (typeof FormHandler == "undefined") { // Make sure namespace isn't used.
                     form.elements['multiplierMax'].value,
                     form.elements['multiplicandMin'].value,
                     form.elements['multiplicandMax'].value);
-                appendReplaceNode(table, form);
+                appendReplaceHtmlElement(table, form);
             });
             
             for (var i = 0; i < form.elements.length; i++) {
