@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--
+   AUTHOR:  Sean Perrier
+   EMAIL:   sean_perrier@student.uml.edu
+   FILE:    /assignments/assignment7/index.html
+   
+   DATE CREATED:  November 01, 2016 4:30 PM
+   DATE MODIFIED: November 14, 2016 2:00 PM
+   
+   AFFILIATION:
+     Author is an undergraduate at UMass Lowell majoring in Computer
+     Science. File was created for UMass Lowell's 'COMP 4610 GUI
+     Programming I' course.
+   
+   FILE DESCRIPTION:
+     Assignment #8: Using the jQuery UI Slider and Tab Widgets
+     
+     This assignment is an extension of Assignment #6 and Assignment #7.
+     This assignment required the implementation of jQuery UI sliders and
+     tabs, as well as implementation of dynamic table updating.
+     
+     This file is the HTML structure of a web page. The web page
+     uses javascript to create and display a multiplication table.
+     Multiplier and multiplicand values are provided by the user via an
+     HTML form, and the page is styled using CSS.
+                      
+   COPYRIGHT:
+     Copyright (c) 2016 by Sean M. Perrier. All rights reserved.
+-->
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Assignment 7 - Using the jQuery Validation Plugin with Your Dynamic Table</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" defer></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js" defer></script>
+    <script src="js/script.js" defer></script>
+  </head>
+  <body>
+    <form id="form" novalidate>
+        
+        <!-- Multiplier form options -->
+        <fieldset>
+            <legend>Horizontal (Multiplier)</legend>
+            <div>
+                <label for="multiplierMin">Minimum</label>
+                <input type="number" id="multiplierMin" name="multiplierMin"
+                    value="-100" min="-100" max="100" autocomplete="off">
+                    
+                <div id="multiplierMinSlider" class="slider"></div>
+            </div>
+        
+            <div>
+                <label for="multiplierMax">Maximum</label>
+                <input type="number" id="multiplierMax" name="multiplierMax"
+                    value="-100" min="-100" max="100" autocomplete="off">
+                    
+                <div id="multiplierMaxSlider" class="slider"></div>
+            </div>
+        </fieldset>
+        <div id="multiplierError" class="error hidden"></div>
+        
+        
+        <!-- Multiplicand form options -->
+        <fieldset>
+            <legend>Vertical (Multiplicand)</legend>
+            <div>
+                <label for="multiplicandMin">Minimum</label>
+                <input type="number" id="multiplicandMin" name="multiplicandMin"
+                    value="-100" min="-100" max="100" autocomplete="off">
+                    
+                <div id="multiplicandMinSlider" class="slider"></div>
+            </div>
+        
+            <div>
+                <label for="multiplicandMax">Maximum</label>
+                <input type="number" id="multiplicandMax" name="multiplicandMax"
+                    value="-100" min="-100" max="100" autocomplete="off">
+                    
+                <div id="multiplicandMaxSlider" class="slider"></div>
+            </div>
+        </fieldset>
+        <div id="multiplicandError" class="error hidden"></div>
+        
+        <input type="submit" value="Create Table">
+    </form>
+    
+    <!-- Buttons for removing tabs -->
+    <fieldset id="tabButtons" class="hidden">
+        <legend>Remove Tabs</legend>
+        <input id="removeAllTabs" type="button" value="All">
+        <input id="removeTabsRight" type="button" value="To Right of Active">
+        <input id="removeTabsLeft" type="button" value="To Left of Active">
+    </fieldset>
+    
+    <!-- Tabbed table area -->
+    <div id="tableTabs" class="hidden">
+        <ul></ul>
+    </div>
+  </body>
+</html>

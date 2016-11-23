@@ -1,0 +1,206 @@
+/**
+ * AUTHOR:  Sean Perrier
+ * EMAIL:   sean_perrier@student.uml.edu
+ * FILE:    /assignments/assignment7/css/style.css
+ * 
+ * DATE CREATED:  November 01, 2016 5:00 PM
+ * DATE MODIFIED: November 10, 2016 2:30 PM
+ * 
+ * AFFILIATION:
+ *   Author is an undergraduate at UMass Lowell majoring in Computer
+ *   Science. File was created for UMass Lowell's 'COMP 4610 GUI 
+ *   Programming I' course.
+ *   
+ * FILE DESCRIPTION:
+ *   Assignment #8: Using the jQuery UI Slider and Tab Widgets
+ *   
+ *   This assignment is an extension of Assignment #6 and Assignment #7.
+ *   This assignment required the implementation of jQuery UI sliders and
+ *   tabs, as well as implementation of dynamic table updating.
+ *   
+ *   This file is the CSS styling of a web page. The web page
+ *   uses javascript to create and display a multiplication table.
+ *   Multiplier and multiplicand values are provided by the user via an
+ *   HTML form, and the page is styled using CSS.
+ *   
+ * COPYRIGHT:
+ *   Copyright (c) 2016 by Sean M. Perrier. All rights reserved.
+ */
+
+html {
+    background-color: #333333;
+    height: 100%;
+}
+
+body {
+    background-color: #ffffff;
+    border-left: 2px solid #000000;
+    border-right: 2px solid #000000;
+    color: #333333;
+    margin: 0 auto;
+    max-width: 960px;
+    min-height: 100%;
+    min-width: 700px;
+    padding: 20px;
+    width: 65%;
+}
+
+html, body, input, .ui-widget {
+    font: normal 16px/100% Arial, sans-serif;
+}
+
+fieldset {
+    border: 1px solid #000000;
+    padding: 10px 20px 15px 20px;
+    margin: 0;
+}
+
+legend {
+    font-weight: bold;
+}
+
+input[type='submit'], input[type='button'] {
+    background-color: #333333;
+    border: 0;
+    color: #f3b225; /* Orangish */
+    padding: 10px 20px;
+}
+
+/** Styling for form contents. **/
+
+#form fieldset {
+    margin-bottom: 20px;
+}
+
+#form fieldset > div:first-of-type {
+    padding-bottom: 10px;
+}
+#form fieldset > div:nth-of-type(2) {
+    padding-top: 20px;
+}
+
+#form label:not(.error) {
+    display: block;
+    font-weight: bold;
+    padding-bottom: 4px;
+}
+#form div.error, #form label.error {
+    color: red;
+    font-weight: bold;
+}
+#form div.error {
+    border: 1px solid #000000;
+    border-top: 0;
+    padding: 5px 20px;
+}
+#form input[type='number'] {
+    margin-right: 20px;\
+    border: 1px solid #000000;
+}
+
+#form input[type='submit']:hover {
+    color: #ffffff;
+}
+
+#form input[type='submit']:active {
+    background-color: #000000;
+}
+#form .ui-slider {
+    border: 1px solid #000000;
+    height: 4px;
+    margin: 15px 4px;
+}
+
+#form .ui-slider .ui-slider-handle {
+    top: -10px;
+    margin-left: -5px;
+    width: 10px;
+    height: 24px;
+    border: 1px solid black;
+    border-radius: 0;
+    background-color: #ffffff;
+    background-image: none;
+    box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.8);
+}
+
+#tabButtons {
+    margin: 20px 0;
+}
+#tableTabs {
+    border: 1px solid #000000;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#tableTabs .ui-tabs-nav {
+    border-radius: 0;
+    background-image: none;
+    background-color: #333333;
+    border: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    font-size: 0.8em;
+}
+
+#tableTabs .ui-tabs-tab {
+    
+    border-radius: 0;
+    border: 0;
+    background-color: #c4c4c4;
+    background-image: none;
+    display: inline-block;
+    float: none;
+    vertical-align: bottom;
+    border-bottom: 1px solid #000000;
+}
+#tableTabs .ui-tabs-active {
+    background-color: #ffffff;
+    font-weight: bold;
+}
+
+#tableTabs .tabClose {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    padding-right: 5px;
+    cursor: pointer;
+}
+
+#tableTabs .ui-tabs-panel {
+    height: 500px;
+    padding: 0;
+    overflow: auto;
+    flex-grow: 1;
+}
+
+#table {
+    border-collapse: collapse;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+#table tr:nth-child(even) td:nth-child(odd),
+#table tr:nth-child(odd) td:nth-child(even) {
+    /* Color every other td cell */
+    background-color: #f3b225; /* Orangish */
+}
+
+#table th {
+    background-color: #333333;
+    color: #f3b225; /* Orangish */
+    margin: 0;
+}
+
+#table th, #table td {
+    border: 2px solid #ffffff;
+    padding: 0.8em;
+}
+.hidden {
+    display: none !important;
+}
+.ui-widget {
+    border-radius: 0;
+}
