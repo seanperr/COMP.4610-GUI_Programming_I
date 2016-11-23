@@ -274,11 +274,23 @@ if (typeof FormHandler == 'undefined') { // Make sure namespace isn't used.
                 slide: function(event, ui) {
                     $(this).siblings('input').val(ui.value);
                     $(this).siblings('input').valid();
+                },
+                change: function(event, ui) {
+                    var form = $(this).closest("form")[0];
+                    var dynamic = form.elements['dynamicTab'].checked;
+                    if( dynamic && $(form).valid() ) {
+                        updateActiveTab(form);
+                    }
                 }
             });
             
             $('input[type="number"]').on('input', function(event) {
                 $(this).siblings('.slider').slider('value', $(this).val());
+                var form = $(this).closest("form")[0];
+                var dynamic = form.elements['dynamicTab'].checked;
+                if( dynamic && $(form).valid() ) {
+                    updateActiveTab(form);
+                }
             });
             
         };
@@ -346,8 +358,10 @@ if (typeof FormHandler == 'undefined') { // Make sure namespace isn't used.
             }
             for( var i = start; i < end; i++ ) {
                 var li = tabHandlesList.eq(i);
+                
                 //Use the tab handles href as a selector to remove content
                 $(li.find('a').attr('href')).remove();
+                
                 //remove the table handle
                 li.remove();
             }
@@ -364,20 +378,12 @@ if (typeof FormHandler == 'undefined') { // Make sure namespace isn't used.
             }
         }
         
-        var createTab = function(form) {
-            if(!tabs.is(':visible')) {
-                toggleTabVisibility(true);
-            }
+        var addTableDataToTab = function(form, tabTitleHolder, tabContentHolder) {
             var multiplierMin = form.elements['multiplierMin'].value;
             var multiplierMax = form.elements['multiplierMax'].value;
             var multiplicandMin = form.elements['multiplicandMin'].value;
             var multiplicandMax = form.elements['multiplicandMax'].value;
             
-            //Each tab needs a unique id
-            //use the table inputs so we never build the same table twice
-            var tabID = "tab-" + tabCount;
-            tabCount++;
-                
             //Build the tab title
             var tabTitleText =
                     '(' + multiplierMin +
@@ -385,14 +391,45 @@ if (typeof FormHandler == 'undefined') { // Make sure namespace isn't used.
                     ') by (' + multiplicandMin +
                     ') to (' + multiplicandMax + ')';
             
+            tabTitleHolder.innerHTML = tabTitleText;
+            
+            //Add the contents to the content holder
+            var table = createMultTable( multiplierMin, multiplierMax,
+                    multiplicandMin, multiplicandMax);
+            $(tabContentHolder).empty();
+            appendReplaceHtmlElement(table, tabContentHolder);
+        }
+        
+        var updateActiveTab = function(form){
+            var activeTab = tabs.tabs('option', 'active');
+            if( activeTab === false ) {
+                createTab(form);
+            } else {
+                var tabHandle = tabHandles.find('li').eq(activeTab);
+                var tabTitleHolder = tabHandle.find('a');
+                var tabContentHolder = $(tabTitleHolder.attr('href')); 
+                addTableDataToTab(form, tabTitleHolder[0], tabContentHolder[0]);
+                tabs.tabs('refresh');
+            }
+            
+        }
+        
+        var createTab = function(form) {
+            if(!tabs.is(':visible')) {
+                toggleTabVisibility(true);
+            }
+            
+            //Each tab needs a unique id
+            var tabID = "tab-" + tabCount;
+            tabCount++;
+            
             //Add the tab handle
             var li = document.createElement('li');
             li.id = "handle-" + tabID;
             var a = document.createElement('a');
             a.href = "#" + tabID;
             li.appendChild(a);
-            tabTitle = document.createTextNode(tabTitleText);
-            a.appendChild(tabTitle);
+            
             //Add a close button
             var div = document.createElement('div');
             div.className = "tabClose";
@@ -405,11 +442,8 @@ if (typeof FormHandler == 'undefined') { // Make sure namespace isn't used.
             div.id = tabID;
             tabs.append(div);
             
-            //Add the contents to the content holder
-            var table = createMultTable(
-                multiplierMin, multiplierMax,
-                multiplicandMin, multiplicandMax);
-            appendReplaceHtmlElement(table, div);
+            //Add the table title and table to the tab
+            addTableDataToTab(form, a, div);
             
             tabs.tabs('refresh');
             
