@@ -53,6 +53,7 @@ fieldset {
     border: 1px solid #000000;
     padding: 10px 20px 15px 20px;
     margin: 0;
+    margin-top: 20px;
 }
 
 legend {
@@ -67,10 +68,6 @@ input[type='submit'], input[type='button'] {
 }
 
 /** Styling for form contents. **/
-
-#form fieldset {
-    margin-bottom: 20px;
-}
 
 #form fieldset > div:first-of-type {
     padding-bottom: 10px;
@@ -129,6 +126,9 @@ input[type='submit'], input[type='button'] {
     padding: 10px;
 }
 
+#formFooter {
+    margin-top: 20px;
+}
 #tabButtons {
     margin: 20px 0;
 }
