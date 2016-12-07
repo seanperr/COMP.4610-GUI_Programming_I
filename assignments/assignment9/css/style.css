@@ -1,0 +1,110 @@
+/**
+ * AUTHOR:  Sean Perrier
+ * EMAIL:   sean_perrier@student.uml.edu
+ * FILE:    /assignments/assignment9/css/style.css
+ * 
+ * DATE CREATED:  November 30, 2016 10:30 AM
+ * DATE MODIFIED: December 05, 2016 2:00 PM
+ * 
+ * AFFILIATION:
+ *   Author is an undergraduate at UMass Lowell majoring in Computer
+ *   Science. File was created for UMass Lowell's 'COMP 4610 GUI 
+ *   Programming I' course.
+ *   
+ * FILE DESCRIPTION:
+ *   Assignment #9: Implementing a Bit of Scrabble with Drag-and-Drop
+ *   
+ * COPYRIGHT:
+ *   Copyright (c) 2016 by Sean M. Perrier. All rights reserved.
+ */
+ 
+html, body, input {
+    font: normal 14px/100% Arial, sans-serif;
+}
+body {
+    width: 960px;
+}
+#scrabbleBoard {
+    border: 2px solid #000000;
+    border-collapse: collapse;
+    float: left;
+}
+.scrabbleBoardSpace {
+    font-size: 0.8rem;
+    background-color: #ddd6c3;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: relative;
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 1px solid #ffffff;
+}
+.Lx2 {
+    background-color: #aad0e3;
+}
+.Wx2 {
+    background-color: #efaba0;
+}
+.Lx3 {
+    background-color: #01a7d9;
+}
+.Wx3 {
+    background-color: #f64531;
+}
+.Lx2:before {
+    content: 'double letter score';
+    
+}
+.Wx2:before {
+    content: 'double word score';
+    
+}
+.Lx3:before {
+    content: 'triple letter score';
+}
+.Wx3:before {
+    content: 'triple word score';
+}
+.scrabbleTile {
+    background: url('../images/lightWoodRepeating.png'); /* from easyfreepatterns.com */
+    background-size: 100% 100%;
+    border: 2px outset #cca574;
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    float: left;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.scrabbleTile > span:first-child {
+    line-height: 3rem;
+    font-size: 2rem;
+}
+.scrabbleTile > span:last-child {
+    position: absolute;
+    bottom: 4px;
+    right: 2px;
+    font-size: 1.2rem;
+}
+.scrabbleRack {
+    border: 2px solid #000000;
+    padding: 5px;
+    position: relative;
+    background-color: black;
+    display: inline-block;
+    width: 100%;
+}
+.scrabbleRack h3 {
+    color: #ffffff;
+    margin: 0 0 5px 0;
+    text-align: center;
+}
+.scrabbleScores {
+    font-size: 2rem;
+    display: inline-block;
+}
