@@ -20,24 +20,24 @@
 
 if (typeof ScrabbleTile == 'undefined') {
     var ScrabbleTile = function(aLetter, aValue, aId) {
-        var domElement;
+        var tile;
         var letter = aLetter;
         var value = aValue;
         var id = aId;
         
         function init() {
-            domElement = $('<div id="' + id + '" class="scrabbleTile"><span>' + letter + '</span><span>' + value + '</span></div>');
-            domElement.draggable({
-                cursor: 'move',
-                revert: 'invalid',
-                revertDuration: 0
+            tile = $('<div id="' + id + '" class="scrabbleTile"><span>' + letter + '</span><span>' + value + '</span></div>');
+            tile.draggable({
+                revert: true,
+                revertDuration: 0,
+                addClasses: false
             }
+            
             ).disableSelection();
             
-            return domElement;
-        }
-        function getDomElement() {
-            return domElement;
+            $.data(tile[0], 'jsObject', this);
+			
+            return tile;
         }
         function getLetter() {
             return letter;
@@ -50,7 +50,6 @@ if (typeof ScrabbleTile == 'undefined') {
         }
         return {
             init: init,
-            getDomElement: getDomElement,
             getLetter: getLetter,
             getValue: getValue,
             getId: getId

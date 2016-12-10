@@ -20,35 +20,56 @@
  
 if (typeof ScrabbleBag == 'undefined') {
     var ScrabbleBag = function() {
-        var domElement;
-        var scrabbleTiles = [];
+        var bag;
+        var tiles = [];
         
         function init() {
-            domElement = $('<div id="scrabbleBag"></div>');
-            return domElement;
+            bag = $('<div id="scrabbleBag"></div>');
+            
+            bag.droppable({
+                accept: '.scrabbleTile',
+                drop: function(e, ui) {
+                    
+                    let tile = ui.draggable.detach();
+                    let owner = tile.attr('data-owner');
+                    tile.removeAttr('data-owner'); // Remove owner id from tile.
+                    
+                    // Get the rack that this tile belongs to.
+                    let rack = $('.scrabbleRack[data-owner="' + owner + '"]');
+                    console.log(owner);
+                    
+                    // Put 2 new tiles in the rack, and add old tile to bag.
+                    newTile1 = removeRandomTile();
+                    newTile1.attr('data-owner', owner);
+                    newTile2 = removeRandomTile();
+                    newTile2.attr('data-owner', owner);
+                    
+                    rack.append(newTile1, newTile2);
+                    addTiles([tile]);
+                }
+            });
+            return bag;
         }
         function empty() {
-            scrabbleTiles = [];
+            tiles = [];
         }
-        
-        function addTile(scrabbleTile) {
-            scrabbleTiles.push(scrabbleTile);
-            //domElement.append(scrabbleTile.getDomElement());
+        function addTiles(aTiles) {
+            tiles = $.merge(tiles, aTiles);
         }
         
         function removeRandomTile() {
-            if(scrabbleTiles.length == 0) {
+            if(tiles.length == 0) {
                 return null;
             }
-            var randomIndex = Math.floor(Math.random() * scrabbleTiles.length);
-            var removedTile = scrabbleTiles.splice(randomIndex, 1)[0];
+            var randomIndex = Math.floor(Math.random() * tiles.length);
+            var removedTile = tiles.splice(randomIndex, 1)[0];
             return removedTile;
         }
         
         return {
             init: init,
             empty: empty,
-            addTile: addTile,
+            addTiles: addTiles,
             removeRandomTile: removeRandomTile
         }
     };

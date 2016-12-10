@@ -20,42 +20,48 @@
  
 if (typeof ScrabbleRack == 'undefined') {
     var ScrabbleRack = function(aPlayerId) {
+        var rack;
         var playerId = aPlayerId;
-        var domElement;
-        var scrabbleTiles = [];
         
         function init() {
-            domElement = $('<div class="scrabbleRack"><h3>Player ' + (playerId + 1) + '</h3></div>');
-            
-            //domElement.sortable({items: '.scrabbleTile'}).disableSelection();
-            
-            return domElement;
-        }
-        function getDomElement() {
-            return domElement;
-        }
-        function addTile(scrabbleTile) {
-            scrabbleTiles.push(scrabbleTile);
-            //domElement.sortable('refresh');
-            domElement.append(scrabbleTile.getDomElement());
-        }
-        function removeTile(id = null) {
-            if(id === null) {
-                // add return random functionality.
-            }
-            for (var i = 0; i < scrabbleTiles.length; i++) {
-                if(scrabbleTiles[i].getId() === id) {
-                    return scrabbleTiles.splice(i, 1);
+            rack = $('<div class="scrabbleRack hidden" data-owner="' + playerId + '">' +
+                '<div class="rackLabel"><h3>Player ' + (playerId + 1) + '</h3></div>' +
+                '<div class="rackDrop"></div></div>');
+            rack.find('.rackDrop').droppable({
+                addClasses: false,
+                accept: '.scrabbleTile', // Accept only tiles.
+                drop: function(e, ui) {  // Called when rack is dropped on.
+                    
+                    // Remove the tile from the DOM.
+                    let tile = ui.draggable.detach();
+                    
+                    // Add owner id to tile.
+                    tile.attr('data-owner', playerId);
+                    
+                    // Reattach the tile to the DOM, but in this rack.
+                    tile.appendTo(this);
+                    tile.css({top: '0', left: '0'}); // Reset position.
+                  
                 }
-            }
-            return null; // No tiles found.
+             });
+            return rack;
         }
+        
+        function addTiles(aTiles) { console.log('a');
+            for(let i = 0; i < aTiles.length; i++) {
+                aTiles[i].attr('data-owner', playerId);
+                rack.find('.rackDrop').append(aTiles[i]);
+            }
+        }
+        
+        function getRack() {
+			return rack;
+		}
         
         return {
             init: init,
-            getDomElement: getDomElement,
-            addTile: addTile,
-            removeTile: removeTile
+            addTiles: addTiles,
+			getRack: getRack
         }
     };
 }

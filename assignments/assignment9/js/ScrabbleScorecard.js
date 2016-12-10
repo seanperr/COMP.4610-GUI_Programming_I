@@ -1,7 +1,7 @@
 /**
  * AUTHOR:  Sean Perrier
  * EMAIL:   sean_perrier@student.uml.edu
- * FILE:    /assignments/assignment9/js/ScrabbleScores.js
+ * FILE:    /assignments/assignment9/js/ScrabbleScorecard.js
  * 
  * DATE CREATED:  November 30, 2016 10:30 AM
  * DATE MODIFIED: December 05, 2016 2:00 PM
@@ -18,32 +18,30 @@
  *   Copyright (c) 2016 by Sean M. Perrier. All rights reserved.
  */
  
-if (typeof ScrabbleScores == 'undefined') {
-    var ScrabbleScores = function(aNumberOfPlayers) {
-        var numberOfPlayers = aNumberOfPlayers;
+if (typeof ScrabbleScorecard == 'undefined') {
+    var ScrabbleScorecard = function() {
+        var scorecard;
         var scores = [];
-        var domElement;
         
         function init() {
-            domElement = $('<div class="scrabbleScores"></div>');
-            for(let i = 0; i < numberOfPlayers; i++) {
-                domElement.append('<div>Player ' + (i + 1) + ': <span>0</span></div>');
+            scorecard = $('<div class="scrabbleScorecard"><div class="scoresLabel">Scores</div></div>');
+            return scorecard;
+        }
+        function populatePlayers(aNumberOfPlayers) {
+            for(let i = 0; i < aNumberOfPlayers; i++) {
+                scorecard.append('<div class="scoresPlayer">Player ' + (i + 1) + ': <span>0</span></div>');
                 scores.push(0);
             }
-            return domElement;
-        }
-        function getDomElement() {
-            return domElement;
         }
         function updateScore(playerId, value) {
             scores[playerId] += value;
-            domElement.find('span').eq(playerId).text(scores[playerId]);
+            scorecard.find('span').eq(playerId).text(scores[playerId]);
         }
         
         return {
             init: init,
-            getDomElement: getDomElement,
-            updateScore: updateScore
+            updateScore: updateScore,
+            populatePlayers: populatePlayers
         }
     };
 }
