@@ -19,7 +19,8 @@
  */
  
 if (typeof ScrabbleBag == 'undefined') {
-    var ScrabbleBag = function() {
+    var ScrabbleBag = function(aScrabbleManager) {
+        var scrabbleManager = aScrabbleManager;
         var bag;
         var tiles = [];
         
@@ -44,8 +45,10 @@ if (typeof ScrabbleBag == 'undefined') {
                     newTile2 = removeRandomTile();
                     newTile2.attr('data-owner', owner);
                     
-                    rack.append(newTile1, newTile2);
+                    rack.find('.rackDrop').append(newTile1, newTile2);
                     addTiles([tile]);
+                    
+                    scrabbleManager.forfeitTurn();
                 }
             });
             return bag;

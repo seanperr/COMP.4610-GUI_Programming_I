@@ -82,7 +82,7 @@ if (typeof ScrabbleManager == 'undefined') {
             scrabbleDictionary.init();
             
             // Create the tile bag.
-            scrabbleBag = new ScrabbleBag();
+            scrabbleBag = new ScrabbleBag(scrabbleManager);
             scrabbleContainer.append(scrabbleBag.init());
             
             // Create tiles and put them in the bag.
@@ -222,7 +222,7 @@ if (typeof ScrabbleManager == 'undefined') {
         }
         
         function forfeitTurn() {
-			let newTiles = scrabbleBoard.getNewTiles();
+			let newTiles = scrabbleBoard.getAndClearNewTiles();
 			// Put new tiles back on the player's rack.
             scrabbleRacks[currentPlayerId].addTiles(newTiles);
 			endTurn();
